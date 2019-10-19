@@ -1,0 +1,1191 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["bash","javascript"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="bash">bash</a>
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.
+<a href="http://192.168.1.26/Cursos/tienda.dev/public/docs/collection.json">Get Postman Collection</a></p>
+<!-- END_INFO -->
+<h1>Carrito de compras</h1>
+<p>API para carrito de compras</p>
+<!-- START_202aeeba9d28471d59eaf483f8f7b195 -->
+<h2>Lista</h2>
+<p>Lista de productos en el carrito de compras</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/api/carrito/listar" \
+    -H "Content-Type: application/json" \
+    -d '{"cliente_id":19}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/carrito/listar");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "cliente_id": 19
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "message": "Lista",
+    "data": []
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/carrito/listar</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cliente_id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id del cliente</td>
+</tr>
+</tbody>
+</table>
+<!-- END_202aeeba9d28471d59eaf483f8f7b195 -->
+<!-- START_ecff5b3edf1fd68c812e8844dd5cf904 -->
+<h2>Agregar productos</h2>
+<p>Agregar productos al carrito de compras</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/carrito/agregar" \
+    -H "Content-Type: application/json" \
+    -d '{"cliente_id":2,"producto_id":1,"cantidad":10,"precio":"natus"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/carrito/agregar");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "cliente_id": 2,
+    "producto_id": 1,
+    "cantidad": 10,
+    "precio": "natus"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/carrito/agregar</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cliente_id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id del cliente</td>
+</tr>
+<tr>
+<td>producto_id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id del producto</td>
+</tr>
+<tr>
+<td>cantidad</td>
+<td>integer</td>
+<td>required</td>
+<td>Cantidad de productos</td>
+</tr>
+<tr>
+<td>precio</td>
+<td>decimal</td>
+<td>required</td>
+<td>Precio calculado</td>
+</tr>
+</tbody>
+</table>
+<!-- END_ecff5b3edf1fd68c812e8844dd5cf904 -->
+<!-- START_ed6ade0986161cc6adae9a31d0f3c828 -->
+<h2>Eliminar productos</h2>
+<p>Eliminar productos del carrito de compras</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/carrito/eliminar" \
+    -H "Content-Type: application/json" \
+    -d '{"id":10}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/carrito/eliminar");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 10
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/carrito/eliminar</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id del producto</td>
+</tr>
+</tbody>
+</table>
+<!-- END_ed6ade0986161cc6adae9a31d0f3c828 -->
+<h1>Cliente</h1>
+<p>API's para el cliente</p>
+<!-- START_ea71a2e0bf12e55039c3666b39ec8975 -->
+<h2>Login</h2>
+<p>Inicio de sesión de usuarios</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/cliente/login" \
+    -H "Content-Type: application/json" \
+    -d '{"email":"ea","password":"voluptatem"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/cliente/login");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "email": "ea",
+    "password": "voluptatem"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/cliente/login</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>required</td>
+<td>Email del cliente</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td>Password del cliente</td>
+</tr>
+</tbody>
+</table>
+<!-- END_ea71a2e0bf12e55039c3666b39ec8975 -->
+<!-- START_ad783baef808c69801cc6def35d30f42 -->
+<h2>Registro</h2>
+<p>Registro de clientes</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/cliente/registro" \
+    -H "Content-Type: application/json" \
+    -d '{"nombre":"ipsa","apellido":"magni","direccion":"voluptatum","telefono":"aut","email":"reprehenderit","password":"quia"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/cliente/registro");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "nombre": "ipsa",
+    "apellido": "magni",
+    "direccion": "voluptatum",
+    "telefono": "aut",
+    "email": "reprehenderit",
+    "password": "quia"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/cliente/registro</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>required</td>
+<td>Nombres del cliente</td>
+</tr>
+<tr>
+<td>apellido</td>
+<td>string</td>
+<td>required</td>
+<td>Apellidos del cliente</td>
+</tr>
+<tr>
+<td>direccion</td>
+<td>string</td>
+<td>required</td>
+<td>Dirección del cliente</td>
+</tr>
+<tr>
+<td>telefono</td>
+<td>string</td>
+<td>required</td>
+<td>Teléfono del cliente</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>required</td>
+<td>Email del cliente</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>required</td>
+<td>Password del cliente</td>
+</tr>
+</tbody>
+</table>
+<!-- END_ad783baef808c69801cc6def35d30f42 -->
+<!-- START_363421a2cb5b2463ea954325124b576b -->
+<h2>Editar cliente</h2>
+<p>Editar datos del cliente</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/cliente/editar" \
+    -H "Content-Type: application/json" \
+    -d '{"id":6,"nombre":"et","apellido":"assumenda","direccion":"quidem","telefono":"necessitatibus","password":"quo"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/cliente/editar");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 6,
+    "nombre": "et",
+    "apellido": "assumenda",
+    "direccion": "quidem",
+    "telefono": "necessitatibus",
+    "password": "quo"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/cliente/editar</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id del cliente</td>
+</tr>
+<tr>
+<td>nombre</td>
+<td>string</td>
+<td>required</td>
+<td>Nombres del cliente</td>
+</tr>
+<tr>
+<td>apellido</td>
+<td>string</td>
+<td>required</td>
+<td>Apellidos del cliente</td>
+</tr>
+<tr>
+<td>direccion</td>
+<td>string</td>
+<td>required</td>
+<td>Dirección del cliente</td>
+</tr>
+<tr>
+<td>telefono</td>
+<td>string</td>
+<td>required</td>
+<td>Teléfono del cliente</td>
+</tr>
+<tr>
+<td>password</td>
+<td>string</td>
+<td>optional</td>
+<td>opcional Password del cliente</td>
+</tr>
+</tbody>
+</table>
+<!-- END_363421a2cb5b2463ea954325124b576b -->
+<!-- START_c745061a7ccca34a25385acc179adf97 -->
+<h2>Detalle del cliente</h2>
+<p>Leer los datos de un cliente</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/api/cliente/1?id=accusantium" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/cliente/1");
+
+    let params = {
+            "id": "accusantium",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "message": "Cliente encontrado",
+    "data": {
+        "id": 1,
+        "email": "imarvdt@gmail.com",
+        "password": "$2y$10$6BB17D2KsDHN.bt75L7Gde73SfdpkAUT6.Riq4wul8b2dnheiOx2e",
+        "nombre": "Cesar",
+        "apellido": "Peres",
+        "telefono": "234828422",
+        "direccion": "Lima",
+        "created_at": "2019-05-29 18:14:19",
+        "updated_at": "2019-08-10 06:12:14",
+        "deleted_at": null
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/cliente/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>int required Id del cliente</td>
+</tr>
+</tbody>
+</table>
+<!-- END_c745061a7ccca34a25385acc179adf97 -->
+<h1>Dirección</h1>
+<p>API para direccion del cliente</p>
+<!-- START_4f628e4a86e26f6610c1befaa887cc70 -->
+<h2>Leer dirección</h2>
+<p>Leer la dirección de un cliente</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/api/direccion/1?id=ducimus" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/direccion/1");
+
+    let params = {
+            "id": "ducimus",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "message": "Lista",
+    "data": {
+        "id": 1,
+        "cliente_id": 1,
+        "direccion": "Lima",
+        "direccion_2": "Lima",
+        "distrito": "Los Olivos",
+        "referencia": "Lima 2019",
+        "created_at": "2019-08-14 05:50:49",
+        "updated_at": "2019-08-14 05:50:49"
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/direccion/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>int required Id del cliente</td>
+</tr>
+</tbody>
+</table>
+<!-- END_4f628e4a86e26f6610c1befaa887cc70 -->
+<!-- START_a03190557027c01f520bdc26815473af -->
+<h2>Actualizar</h2>
+<p>Actualizar la dirección del cliente</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/direccion/actualizar?cliente_id=qui&amp;direccion=voluptatem&amp;distrito=blanditiis&amp;direccion_2=voluptatem&amp;referencia=laudantium" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/direccion/actualizar");
+
+    let params = {
+            "cliente_id": "qui",
+            "direccion": "voluptatem",
+            "distrito": "blanditiis",
+            "direccion_2": "voluptatem",
+            "referencia": "laudantium",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/direccion/actualizar</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cliente_id</td>
+<td>optional</td>
+<td>int required Id del cliente</td>
+</tr>
+<tr>
+<td>direccion</td>
+<td>optional</td>
+<td>string required Dirección del cliente</td>
+</tr>
+<tr>
+<td>distrito</td>
+<td>optional</td>
+<td>string required Distrito</td>
+</tr>
+<tr>
+<td>direccion_2</td>
+<td>optional</td>
+<td>string required Segunda linea de dirección del cliente</td>
+</tr>
+<tr>
+<td>referencia</td>
+<td>optional</td>
+<td>string required Referencia de la dirección</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a03190557027c01f520bdc26815473af -->
+<h1>Otros</h1>
+<!-- START_258da7584359f2059b8d3fe0d92b1f36 -->
+<h2>productos</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/productos" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/productos");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET productos</code></p>
+<!-- END_258da7584359f2059b8d3fe0d92b1f36 -->
+<!-- START_305ae4c2c5e7f6b212e6c8658de65456 -->
+<h2>productos/create</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/productos/create" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/productos/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET productos/create</code></p>
+<!-- END_305ae4c2c5e7f6b212e6c8658de65456 -->
+<!-- START_63f91e86f6b43bbe011af31d9ce6ed29 -->
+<h2>productos</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/productos" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/productos");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST productos</code></p>
+<!-- END_63f91e86f6b43bbe011af31d9ce6ed29 -->
+<!-- START_72ff3e1bd785851307e73b52c2b509fc -->
+<h2>productos/{producto}/edit</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/productos/1/edit" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/productos/1/edit");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET productos/{producto}/edit</code></p>
+<!-- END_72ff3e1bd785851307e73b52c2b509fc -->
+<!-- START_1a75748a179d5037e8bf6e7f2d849f38 -->
+<h2>productos/{producto}</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://192.168.1.26/Cursos/tienda.dev/public/productos/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/productos/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE productos/{producto}</code></p>
+<!-- END_1a75748a179d5037e8bf6e7f2d849f38 -->
+<h1>Producto</h1>
+<p>API para productos</p>
+<!-- START_b8ae75e8490bb4b5d7b5a74048517747 -->
+<h2>Lista</h2>
+<p>Lista de productos</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/api/producto/listar" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/producto/listar");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "message": "Lista",
+    "data": [
+        {
+            "id": 1,
+            "nombre": "Arroz",
+            "descripcion": "Arroz",
+            "precio": 20,
+            "ruta_imagen": "{\"thumb\":\"\\\/public\\\/productos\\\/foto-producto-10082019062814-thumb.jpg\",\"medium\":\"\\\/public\\\/productos\\\/foto-producto-10082019062814-medium.jpg\",\"full\":\"\\\/public\\\/productos\\\/foto-producto-10082019062814-full.jpg\"}",
+            "created_at": "2019-08-10 06:28:14",
+            "updated_at": "2019-08-14 20:02:46",
+            "deleted_at": null
+        }
+    ]
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/producto/listar</code></p>
+<!-- END_b8ae75e8490bb4b5d7b5a74048517747 -->
+<!-- START_dee856aece8ab6b7fadb207e8245681c -->
+<h2>Detalle</h2>
+<p>Detalle del producto</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/api/producto/detalle/1?id=delectus" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/producto/detalle/1");
+
+    let params = {
+            "id": "delectus",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "message": "Producto encontrado",
+    "data": {
+        "id": 1,
+        "nombre": "Arroz",
+        "descripcion": "Arroz",
+        "precio": 20,
+        "ruta_imagen": "{\"thumb\":\"\\\/public\\\/productos\\\/foto-producto-10082019062814-thumb.jpg\",\"medium\":\"\\\/public\\\/productos\\\/foto-producto-10082019062814-medium.jpg\",\"full\":\"\\\/public\\\/productos\\\/foto-producto-10082019062814-full.jpg\"}",
+        "created_at": "2019-08-10 06:28:14",
+        "updated_at": "2019-08-14 20:02:46",
+        "deleted_at": null
+    }
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/producto/detalle/{id}</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>optional</td>
+<td>int required Id del producto</td>
+</tr>
+</tbody>
+</table>
+<!-- END_dee856aece8ab6b7fadb207e8245681c -->
+<!-- START_4fc46f94e24ba4d9a823482db33e94d2 -->
+<h2>Buscar</h2>
+<p>Buscar un producto por alguna coincidencia</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/api/producto/buscar?query=maxime" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/producto/buscar");
+
+    let params = {
+            "query": "maxime",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "message": "Lista",
+    "data": []
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/producto/buscar</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>optional</td>
+<td>string required Texto a buscar</td>
+</tr>
+</tbody>
+</table>
+<!-- END_4fc46f94e24ba4d9a823482db33e94d2 -->
+<h1>Tarjetas</h1>
+<p>API para tarjetas</p>
+<!-- START_267d767ba5bc725b6b38e7e362afe9c1 -->
+<h2>Listar</h2>
+<p>Listar las tarjetas de un cliente</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://192.168.1.26/Cursos/tienda.dev/public/api/tarjeta/listar?cliente_id=est" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/tarjeta/listar");
+
+    let params = {
+            "cliente_id": "est",
+        };
+    Object.keys(params).forEach(key =&gt; url.searchParams.append(key, params[key]));
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "status": 200,
+    "message": "Lista",
+    "data": []
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/tarjeta/listar</code></p>
+<h4>Query Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cliente_id</td>
+<td>optional</td>
+<td>int required Id del cliente</td>
+</tr>
+</tbody>
+</table>
+<!-- END_267d767ba5bc725b6b38e7e362afe9c1 -->
+<!-- START_8016137207c2cf08488ba59850177a7f -->
+<h2>Agregar</h2>
+<p>Agregar nuevas tarjetas</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/tarjeta/agregar" \
+    -H "Content-Type: application/json" \
+    -d '{"cliente_id":4,"titular":"est","numero_final":"optio","tipo":"nemo"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/tarjeta/agregar");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "cliente_id": 4,
+    "titular": "est",
+    "numero_final": "optio",
+    "tipo": "nemo"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/tarjeta/agregar</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cliente_id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id del cliente</td>
+</tr>
+<tr>
+<td>titular</td>
+<td>string</td>
+<td>required</td>
+<td>Nombre del dueño de la tarjeta</td>
+</tr>
+<tr>
+<td>numero_final</td>
+<td>string</td>
+<td>required</td>
+<td>Cuatro últimos dígitos de la tarjeta</td>
+</tr>
+<tr>
+<td>tipo</td>
+<td>string</td>
+<td>required</td>
+<td>Marca de la tarjeta (Ej. Visa, Mastercard)</td>
+</tr>
+</tbody>
+</table>
+<!-- END_8016137207c2cf08488ba59850177a7f -->
+<!-- START_a407600e2bc6381d0a16d870d3aae15a -->
+<h2>Eliminar</h2>
+<p>Eliminar tarjetas del cliente</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/tarjeta/eliminar" \
+    -H "Content-Type: application/json" \
+    -d '{"id":9}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/tarjeta/eliminar");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 9
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/tarjeta/eliminar</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id de la tarjeta</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a407600e2bc6381d0a16d870d3aae15a -->
+<h1>Ventas</h1>
+<p>API para ventas</p>
+<!-- START_8661847ddb0a6eb6fda402c5292b5b13 -->
+<h2>Agregar</h2>
+<p>Crear nueva venta</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://192.168.1.26/Cursos/tienda.dev/public/api/venta/crear" \
+    -H "Content-Type: application/json" \
+    -d '{"cliente_id":10,"tarjeta_id":4,"total":"doloribus"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://192.168.1.26/Cursos/tienda.dev/public/api/venta/crear");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "cliente_id": 10,
+    "tarjeta_id": 4,
+    "total": "doloribus"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/venta/crear</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cliente_id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id del cliente</td>
+</tr>
+<tr>
+<td>tarjeta_id</td>
+<td>integer</td>
+<td>required</td>
+<td>Id de la tarjeta</td>
+</tr>
+<tr>
+<td>total</td>
+<td>decimal</td>
+<td>required</td>
+<td>Precio total de venta realizada</td>
+</tr>
+</tbody>
+</table>
+<!-- END_8661847ddb0a6eb6fda402c5292b5b13 -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>
